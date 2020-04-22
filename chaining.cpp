@@ -48,6 +48,7 @@ bool Chaining::insertItem(int key) {
             current = current->next;
         }
         current->next = createNode(key, NULL);
+        return true;
     }
 }
 
@@ -70,3 +71,13 @@ void Chaining::printTable() {
     }
 }
 
+node* Chaining::searchItem(int key) {
+    unsigned int hash = hashFunction(key);
+    node* current = table[hash];
+    while (current != NULL) {
+        if (current->key == key) {
+            return current;
+        }
+    }
+    return NULL;
+}
