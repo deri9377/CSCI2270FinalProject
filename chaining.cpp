@@ -2,11 +2,16 @@
 #include "chaining.hpp"
 using namespace std;
 
-
-
 Chaining::Chaining(int bsize) {
     tableSize = bsize;
     table = new CNode*[bsize];
+}
+
+CNode* Chaining::createCNode(int key, CNode *next) {
+    CNode *temp = new CNode();
+    temp->key = key;
+    temp->next = next;
+    return temp;
 }
 
 bool Chaining::insertItem(int key) {
@@ -22,6 +27,7 @@ bool Chaining::insertItem(int key) {
         current->next = createCNode(key, NULL);
         return true;
     }
+    return false;
 }
 
 unsigned int Chaining::hashFunction(int key) {

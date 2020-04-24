@@ -10,7 +10,7 @@ struct LPNode
     struct LPNode* next;
 };
 
-class Chaining
+class LinearProbing
 {
     int tableSize;  // No. of buckets (linked lists)
 
@@ -19,7 +19,7 @@ class Chaining
     int numOfcolision =0;
     LPNode* createLPNode(int key, LPNode* next);
 public:
-    Chaining(int bsize);  // Constructor
+    LinearProbing(int bsize);  // Constructor
 
     // inserts a key into hash table
     bool insertItem(int key);
