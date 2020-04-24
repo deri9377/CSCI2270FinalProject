@@ -1,48 +1,20 @@
 #include <iostream>
+#include "linearProbing.hpp"
 using namespace std;
 
-struct LPNode
-{
-    int key;
-    struct LPNode* next;
-};
-
-class Chaining
-{
-    int tableSize;  // No. of buckets (linked lists)
-
-    // Pointer to an array containing buckets
-    LPNode* *table;
-    int numOfcolision =0;
-    LPNode* createLPNode(int key, LPNode* next);
-public:
-    Chaining(int bsize);  // Constructor
-
-    // inserts a key into hash table
-    bool insertItem(int key);
-
-    // hash function to map values to key
-    unsigned int hashFunction(int key);
-
-    void printTable();
-    int getNumOfCollision();
-
-    LPNode* searchItem(int key);
-};
-
-LPNode* Chaining::createLPNode(int key, LPNode* next) {
+LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
     LPNode* temp;
     temp->key = key;
     temp->next = next;
     return temp;
 }
 
-Chaining::Chaining(int bsize) {
+LinearProbing::LinearProbing(int bsize) {
     tableSize = bsize;
     table = new LPNode*[bsize];
 }
 
-bool Chaining::insertItem(int key) {
+bool LinearProbing::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     int collisions = 0;
     while (table[hash] != NULL) {
@@ -60,11 +32,11 @@ bool Chaining::insertItem(int key) {
     return true;
 }
 
-unsigned int Chaining::hashFunction(int key) {
+unsigned int LinearProbing::hashFunction(int key) {
     return key % tableSize;
 }
 
-void Chaining::printTable() {
+void LinearProbing::printTable() {
     for (int i = 0; i < tableSize; i++) {
         if (table[i] == NULL) {
             cout << "[" << i << "]:" << endl;
@@ -74,11 +46,11 @@ void Chaining::printTable() {
     }
 }
 
-int Chaining::getNumOfCollision() {
+int LinearProbing::getNumOfCollision() {
     return numOfcolision;
 }
 
-LPNode* Chaining::searchItem(int key) {
+LPNode* LinearProbing::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     int collisions = 0;
     while (table[hash]->key != key) {
