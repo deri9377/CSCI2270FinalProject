@@ -83,3 +83,4 @@ void bST::display()
     int spaceNum = 1;
     displayHelper(spaceNum, root);
     return;
+}
