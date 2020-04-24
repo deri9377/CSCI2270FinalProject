@@ -7,7 +7,6 @@ using namespace std;
 
 double loadChaining(int data[], int dataSize) {
     return 0;
-}
 
 double loadLinearProbing(int data[], int dataSize) {
     return 0;
