@@ -1,22 +1,22 @@
 #include <iostream>
 using namespace std;
 
-struct node
+struct LPNode
 {
     int key;
-    struct node* next;
+    struct LPNode* next;
 };
 
-class LinearProbing
+class Chaining
 {
     int tableSize;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
-    node* *table;
+    LPNode* *table;
     int numOfcolision =0;
-    node* createNode(int key, node* next);
+    LPNode* createLPNode(int key, LPNode* next);
 public:
-    LinearProbing(int bsize);  // Constructor
+    Chaining(int bsize);  // Constructor
 
     // inserts a key into hash table
     bool insertItem(int key);
@@ -27,22 +27,22 @@ public:
     void printTable();
     int getNumOfCollision();
 
-    node* searchItem(int key);
+    LPNode* searchItem(int key);
 };
 
-node* LinearProbing::createNode(int key, node* next) {
-    node* temp;
+LPNode* Chaining::createLPNode(int key, LPNode* next) {
+    LPNode* temp;
     temp->key = key;
     temp->next = next;
     return temp;
 }
 
-LinearProbing::LinearProbing(int bsize) {
+Chaining::Chaining(int bsize) {
     tableSize = bsize;
-    table = new node*[bsize];
+    table = new LPNode*[bsize];
 }
 
-bool LinearProbing::insertItem(int key) {
+bool Chaining::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     int collisions = 0;
     while (table[hash] != NULL) {
@@ -56,15 +56,15 @@ bool LinearProbing::insertItem(int key) {
             return false;
         }
     }
-    table[hash] = createNode(key, NULL);
+    table[hash] = createLPNode(key, NULL);
     return true;
 }
 
-unsigned int LinearProbing::hashFunction(int key) {
+unsigned int Chaining::hashFunction(int key) {
     return key % tableSize;
 }
 
-void LinearProbing::printTable() {
+void Chaining::printTable() {
     for (int i = 0; i < tableSize; i++) {
         if (table[i] == NULL) {
             cout << "[" << i << "]:" << endl;
@@ -74,11 +74,11 @@ void LinearProbing::printTable() {
     }
 }
 
-int LinearProbing::getNumOfCollision() {
+int Chaining::getNumOfCollision() {
     return numOfcolision;
 }
 
-node* LinearProbing::searchItem(int key) {
+LPNode* Chaining::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     int collisions = 0;
     while (table[hash]->key != key) {

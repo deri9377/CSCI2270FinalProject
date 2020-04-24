@@ -4,24 +4,22 @@ using namespace std;
 #ifndef BST_HPP
 #define BST_HPP
 
-struct Node {
+struct bSTNode {
     int key;
-    Node *left;
-    Node *right;
+    bSTNode *left;
+    bSTNode *right;
 };
 
 class bST {
     private:
-        Node *root;
+        bSTNode *root;
 
     public:
         bST();
         ~bST();
         void insert(int key);
-        Node* search(int key);
+        bSTNode* search(int key);
         void display();
-
-
 };
 
 #endif
