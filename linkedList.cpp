@@ -11,11 +11,11 @@ linkedList::~linkedList() {
 
 }
 
-Node* linkedList::search(int key) {
-    Node* current = root;
+LLNode* linkedList::search(int key) {
+    LLNode* current = root;
     while (current != NULL) {
         if (current->key == key) {
-            cout << "Node found" << endl;
+            cout << "LLNode found" << endl;
             return current;
         }
         current = current->next;
@@ -25,13 +25,13 @@ Node* linkedList::search(int key) {
 }
 
 void linkedList::insert(int k) {
-    Node *temp = new Node();
+    LLNode *temp = new LLNode();
     temp->key = k;
     if (root == NULL) {
         root = temp;
         return;
     }
-    Node* current = root;
+    LLNode* current = root;
     while (current != NULL) {
         if (current->next == NULL) {
             current->next = temp;
@@ -42,7 +42,7 @@ void linkedList::insert(int k) {
 }
 
 void linkedList::display() {
-    Node *current = root;
+    LLNode *current = root;
     if (current == NULL) {
         cout << "The list is Empty" << endl;
     } else {

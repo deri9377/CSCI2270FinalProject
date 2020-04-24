@@ -2,10 +2,10 @@
 using namespace std;
 
 
-struct node
+struct CNode
 {
     int key;
-    struct node* next;
+    struct CNode* next;
 };
 
 class Chaining
@@ -13,9 +13,9 @@ class Chaining
     int tableSize;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
-    node* *table;
+    CNode* *table;
     int numOfcolision =0;
-    node* createNode(int key, node* next);
+    CNode* createCNode(int key, CNode* next);
 public:
     Chaining(int bsize);  // Constructor
 
@@ -28,26 +28,26 @@ public:
     void printTable();
     int getNumOfCollision();
 
-    node* searchItem(int key);
+    CNode* searchItem(int key);
 };
 
 
 Chaining::Chaining(int bsize) {
     tableSize = bsize;
-    table = new node*[bsize];
+    table = new CNode*[bsize];
 }
 
 bool Chaining::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     if (table[hash] == NULL) {
-        table[hash] = createNode(key, NULL);
+        table[hash] = createCNode(key, NULL);
     } else {
         numOfcolision++;
-        node* current = table[hash];
+        CNode* current = table[hash];
         while (current->next != NULL) {
             current = current->next;
         }
-        current->next = createNode(key, NULL);
+        current->next = createCNode(key, NULL);
         return true;
     }
 }
@@ -61,7 +61,7 @@ void Chaining::printTable() {
         if (table[i] == NULL) {
             cout << "[" << i << "]:" << endl;
         } else {
-            node* current = table[i];
+            CNode* current = table[i];
             cout << "[" << i << "]:";
             while (current != NULL) {
                 cout << " -> " << current->key;
@@ -71,9 +71,9 @@ void Chaining::printTable() {
     }
 }
 
-node* Chaining::searchItem(int key) {
+CNode* Chaining::searchItem(int key) {
     unsigned int hash = hashFunction(key);
-    node* current = table[hash];
+    CNode* current = table[hash];
     while (current != NULL) {
         if (current->key == key) {
             return current;

@@ -12,7 +12,7 @@ struct node
     struct node* next;
 };
 
-class LinearProbing
+class Chaining
 {
     int tableSize;  // No. of buckets (linked lists)
 
@@ -21,7 +21,7 @@ class LinearProbing
     int numOfcolision =0;
     node* createNode(int key, node* next);
 public:
-    LinearProbing(int bsize);  // Constructor
+    Chaining(int bsize);  // Constructor
 
     // inserts a key into hash table
     bool insertItem(int key);

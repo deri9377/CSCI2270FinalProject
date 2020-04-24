@@ -3,11 +3,10 @@
 #include "ctime"
 #include "linkedList.hpp"
 #include "bST.hpp"
-#include "hash.hpp"
 using namespace std;
 
 double loadChaining() {
-    return 0;
+
 }
 
 double loadLinearProbing() {
@@ -62,6 +61,17 @@ double loadBST() {
 
 
 int main() {
+    int dataA[40000];
+    int dataB[40000];
+    ifstream file1;
+    ifstream file2;
+    file1.open("dataSetA.csv");
+    if (file1.is_open()) {
+        string line;
+        for (int i = 0; i < 40000; i++) {
+            
+        }
+    }
     int ll = loadLinkedList();
     cout << "Linked List - It took: (" << (double)ll/CLOCKS_PER_SEC << " seconds) to load the first 100 elemets" << endl;
     int bST = loadBST();
