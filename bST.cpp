@@ -10,11 +10,11 @@ bST::bST() {
 bST::~bST() {
 
 }
-Node* insertHelper(int key, Node* curr)
+bSTNode* insertHelper(int key, bSTNode* curr)
 {
     if(curr == NULL)
     {
-        Node* temp = new Node(); //New node created with the data given with flag initially
+        bSTNode* temp = new bSTNode(); //New bSTNode created with the data given with flag initially
         temp->key = key;
         temp->left = NULL;
         temp->right = NULL;
@@ -23,13 +23,14 @@ Node* insertHelper(int key, Node* curr)
     //Here the iterator choses to go left or right based on the laws of the BST
     else if(curr->key > key)
     {
-        curr->left = insertHelper(key,curr->left);
+        return curr->left = insertHelper(key,curr->left);
     }
     else if(curr->key < key)
     {
 
-        curr->right = insertHelper(key,curr->right);
+        return curr->right = insertHelper(key,curr->right);
     }
+    return NULL;
 }
 //Uses recursion here to traverse the tree and move things accordingly
 void bST::insert(int key) {
@@ -37,7 +38,7 @@ void bST::insert(int key) {
     return;
 }
 
-Node* recursiveSearch(int key, Node* current) {
+bSTNode* recursiveSearch(int key, bSTNode* current) {
     if (current->key == key) {
         return current;
     } else {
@@ -50,7 +51,7 @@ Node* recursiveSearch(int key, Node* current) {
     return NULL;
 }
 
-Node* bST::search(int key) {
+bSTNode* bST::search(int key) {
     if (root->key == key) {
         return root;
     }
@@ -58,9 +59,9 @@ Node* bST::search(int key) {
 }
 
 
-//This will print a visual model of the BST so that all node and their respective children/parent nodes can be seen
+//This will print a visual model of the BST so that all bSTNode and their respective children/parent bSTNodes can be seen
 //Helper for display
-void displayHelper(int n, Node* here)
+void displayHelper(int n, bSTNode* here)
 {
     if(here == NULL) //Leaf check
     {
@@ -69,11 +70,11 @@ void displayHelper(int n, Node* here)
     n = n + 10; //This increments the spacing on the model
     displayHelper(n,here->right); //Right is traversed before left // Right - Here - Left
     cout << endl;
-    for(int i = 10;i < n;i++) // Spacing the nodes
+    for(int i = 10;i < n;i++) // Spacing the bSTNodes
     {
         printf(" ");
     }
-    printf("%d\n", here->key); // Actual node data
+    printf("%d\n", here->key); // Actual bSTNode data
     displayHelper(n,here->left); //Finally the left is traversed
     return;
 }
