@@ -163,6 +163,7 @@ int main() {
         lLInsertB[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
     }
+
     ofstream mfile;
     mfile.open("outputA.csv");
     mfile << "A" << endl;
