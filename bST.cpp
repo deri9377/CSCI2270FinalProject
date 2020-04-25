@@ -49,6 +49,10 @@ void bST::insert(int key) {
 }
 
 bSTNode* recursiveSearch(int key, bSTNode* current) {
+    if(current == NULL)
+    {
+        return NULL;
+    }
     if (current->key == key) {
         return current;
     } else {
