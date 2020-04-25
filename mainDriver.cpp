@@ -15,7 +15,18 @@ double loadChaining(int data[], Chaining hashChain, int start, int end) {
         hashChain.insertItem(data[i]);
     }
     t = clock() - t;
-    return t;
+    return t/CLOCKS_PER_SEC;
+}
+
+//search for all the items in the data set
+double searchChaining(int data[], int size, Chaining hashChain) {
+    clock_t t;
+    t = clock();
+    for (int i = 0; i < size; i++) {
+        hashChain.searchItem(data[i]);
+    }
+    t = clock() - t;
+    return t/CLOCKS_PER_SEC;
 }
 
 //load data from a set for a linear probing hash map
@@ -26,7 +37,18 @@ double loadLinearProbing(int data[], LinearProbing linearHash, int start, int en
         linearHash.insertItem(data[i]);
     }
     t = clock() - t;
-    return t;
+    return t/CLOCKS_PER_SEC;
+}
+
+//search for all the items in the data set
+double searchLinearProbing(int data[], int size, LinearProbing linearHash) {
+    clock_t t;
+    t = clock();
+    for (int i = 0; i < size; i++) {
+        linearHash.searchItem(data[i]);
+    }
+    t = clock() - t;
+    return t/CLOCKS_PER_SEC;
 }
 
 //load the data from a set for the linked list
@@ -37,7 +59,18 @@ double loadLinkedList(int data[], LinkedList list, int start, int end) {
         list.insert(data[i]);
     }
     t = clock() - t;
-    return t;
+    return t/CLOCKS_PER_SEC;
+}
+
+//search for all the items in the data set
+double searchLinkedList(int data[], int size, LinkedList list) {
+    clock_t t;
+    t = clock();
+    for (int i = 0; i < size; i++) {
+        list.search(data[i]);
+    }
+    t = clock() - t;
+    return t/CLOCKS_PER_SEC;
 }
 
 //read the data for the binary search tree
@@ -48,8 +81,20 @@ double loadBST(int data[], bST tree, int start, int end) {
         tree.insert(data[i]);
     }
     t = clock() - t;
-    return t;
+    return t/CLOCKS_PER_SEC;
 }
+
+//search for all the items in the data set
+double searchBST(int data[], int size, bST tree) {
+    clock_t t;
+    t = clock();
+    for (int i = 0; i < size; i++) {
+        tree.search(data[i]);
+    }
+    t = clock() - t;
+    return t/CLOCKS_PER_SEC;
+}
+
 
 
 int main() {
