@@ -15,7 +15,7 @@ double loadChaining(int data[], Chaining hashChain, int start, int end) {
         hashChain.insertItem(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //search for all the items in the data set
@@ -26,7 +26,7 @@ double searchChaining(int data[], int size, Chaining hashChain) {
         hashChain.searchItem(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //load data from a set for a linear probing hash map
@@ -37,7 +37,7 @@ double loadLinearProbing(int data[], LinearProbing linearHash, int start, int en
         linearHash.insertItem(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //search for all the items in the data set
@@ -48,7 +48,7 @@ double searchLinearProbing(int data[], int size, LinearProbing linearHash) {
         linearHash.searchItem(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //load the data from a set for the linked list
@@ -59,7 +59,7 @@ double loadLinkedList(int data[], LinkedList list, int start, int end) {
         list.insert(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //search for all the items in the data set
@@ -70,7 +70,7 @@ double searchLinkedList(int data[], int size, LinkedList list) {
         list.search(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //read the data for the binary search tree
@@ -81,7 +81,7 @@ double loadBST(int data[], bST tree, int start, int end) {
         tree.insert(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 //search for all the items in the data set
@@ -92,7 +92,7 @@ double searchBST(int data[], int size, bST tree) {
         tree.search(data[i]);
     }
     t = clock() - t;
-    return t/CLOCKS_PER_SEC;
+    return (double)t/CLOCKS_PER_SEC;
 }
 
 
@@ -127,33 +127,44 @@ int main() {
     LinkedList list;
     bST tree;
 
+    //Data set A
+    double cInsertA[400];
+    double lPInsertA[400];
+    double lLInsertA[400];
+    double bSTInsertA[400];
+    double cSearchA[400];
+    double lPSearchA[400];
+    double bSTSearchA[400];
 
-    //Data set A times
-    int ll = loadLinkedList(dataA, list, 0, 100);
-    cout << "Linked List - It took: (" << (double)ll/CLOCKS_PER_SEC << " seconds) to load data set A" << endl;
-    int bST = loadBST(dataA, tree, 0, 100);
-    cout << "bST         - It took: (" << (double)bST/CLOCKS_PER_SEC << " seconds) to load data set A" << endl;
-    int chain = loadChaining(dataA, hashChain, 0, 100);
-    cout << "Chaining    - It took: (" << (double)chain/CLOCKS_PER_SEC << " seconds) to load data set A" << endl;
-    int linear = loadLinearProbing(dataA, linearHash, 0, 100);
-    cout << "Linear      - It took: (" << (double)linear/CLOCKS_PER_SEC << " seconds) to load data set A" << endl;
-    cout << endl;
+    for (int i = 0; i < 400; i++) {
+        cInsertA[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
+        lPInsertA[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
+        lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
+        bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
+    }
 
-    //Clear all the data from the structures
     hashChain.~Chaining();
     linearHash.~LinearProbing();
     list.~LinkedList();
     tree.~bST();
 
-    //Data set B times
-    ll = loadLinkedList(dataB, list, 0, 100);
-    cout << "Linked List - It took: (" << (double)ll/CLOCKS_PER_SEC << " seconds) to load data set B" << endl;
-    bST = loadBST(dataB, tree, 0, 100);
-    cout << "bST         - It took: (" << (double)bST/CLOCKS_PER_SEC << " seconds) to load data set B" << endl;
-    chain = loadChaining(dataB, hashChain, 0, 100);
-    cout << "Chaining    - It took: (" << (double)chain/CLOCKS_PER_SEC << " seconds) to load data set B" << endl;
-    linear = loadLinearProbing(dataB, linearHash, 0, 100);
-    cout << "Linear      - It took: (" << (double)linear/CLOCKS_PER_SEC << " seconds) to load data set B" << endl;
+    //Data set B
+    double cInsertB[400];
+    double lPInsertB[400];
+    double lLInsertB[400];
+    double bSTInsertB[400];
+    double cSearchB[400];
+    double lPSearchB[400];
+    double bSTSearchB[400];
+
+    for (int i = 0; i < 400; i++) {
+        cInsertB[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
+        lPInsertB[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
+        lLInsertB[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
+        bSTInsertB[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
+    }
+
+
 }
 
 
