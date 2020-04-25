@@ -22,6 +22,7 @@ class Chaining
     CNode* createCNode(int key, CNode* next);
 public:
     Chaining(int bsize);  // Constructor
+    ~Chaining(); //Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);

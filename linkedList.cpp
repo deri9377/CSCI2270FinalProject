@@ -3,15 +3,19 @@ using namespace std;
 #include "linkedList.hpp"
 
 
-linkedList::linkedList() {
+LinkedList::LinkedList() {
     root = NULL;
 }
 
-linkedList::~linkedList() {
-
+LinkedList::~LinkedList() {
+    while (root != NULL) {
+        LLNode *temp = root->next;
+        delete root;
+        root = temp;
+    }
 }
 
-LLNode* linkedList::search(int key) {
+LLNode* LinkedList::search(int key) {
     LLNode* current = root;
     while (current != NULL) {
         if (current->key == key) {
@@ -24,7 +28,7 @@ LLNode* linkedList::search(int key) {
     return NULL;
 }
 
-void linkedList::insert(int k) {
+void LinkedList::insert(int k) {
     LLNode *temp = new LLNode();
     temp->key = k;
     if (root == NULL) {
@@ -41,7 +45,7 @@ void linkedList::insert(int k) {
     }
 }
 
-void linkedList::display() {
+void LinkedList::display() {
     LLNode *current = root;
     if (current == NULL) {
         cout << "The list is Empty" << endl;

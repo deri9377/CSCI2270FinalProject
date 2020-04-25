@@ -7,6 +7,15 @@ Chaining::Chaining(int bsize) {
     table = new CNode*[bsize];
 }
 
+Chaining::~Chaining() {
+    for (int i = 0; i < tableSize; i++) {
+        if (table[i] != NULL) {
+            delete table[i];
+            table[i] = NULL;
+        }
+    }
+}
+
 CNode* Chaining::createCNode(int key, CNode *next) {
     CNode *temp = new CNode();
     temp->key = key;

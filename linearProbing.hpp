@@ -20,6 +20,7 @@ class LinearProbing
     LPNode* createLPNode(int key, LPNode* next);
 public:
     LinearProbing(int bsize);  // Constructor
+    ~LinearProbing(); //Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);
