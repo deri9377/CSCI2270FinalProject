@@ -65,6 +65,8 @@ CNode* Chaining::searchItem(int key) {
         if (current->key == key) {
             return current;
         }
+        current = current->next;
     }
+    cout << "Not found" << endl;
     return NULL;
 }
