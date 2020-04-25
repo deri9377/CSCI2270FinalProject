@@ -17,7 +17,7 @@ void deleteHelper(bSTNode *node) {
 }
 
 bST::~bST() {
-    deleteHelper(root);
+    // deleteHelper(root);
 }
 
 bSTNode* insertHelper(int key, bSTNode* curr)
@@ -33,14 +33,14 @@ bSTNode* insertHelper(int key, bSTNode* curr)
     //Here the iterator choses to go left or right based on the laws of the BST
     else if(curr->key > key)
     {
-        return curr->left = insertHelper(key,curr->left);
+        curr->left = insertHelper(key,curr->left);
     }
     else if(curr->key < key)
     {
 
-        return curr->right = insertHelper(key,curr->right);
+        curr->right = insertHelper(key,curr->right);
     }
-    return NULL;
+    return curr;
 }
 //Uses recursion here to traverse the tree and move things accordingly
 void bST::insert(int key) {
@@ -49,22 +49,21 @@ void bST::insert(int key) {
 }
 
 bSTNode* recursiveSearch(int key, bSTNode* current) {
+    if(current == NULL)
+    {
+        cout << "Not found" << endl;
+        return NULL;
+    }
     if (current->key == key) {
         return current;
-    } else {
-        if (current->key < key) {
-            recursiveSearch(key, current->right);
-        } else {
-            recursiveSearch(key, current->left);
-        }
     }
-    return NULL;
+    if (current->key < key) {
+        return recursiveSearch(key, current->right);
+    }
+    return recursiveSearch(key, current->left);
 }
 
 bSTNode* bST::search(int key) {
-    if (root->key == key) {
-        return root;
-    }
     return recursiveSearch(key, root);
 }
 
@@ -94,4 +93,18 @@ void bST::display()
     int spaceNum = 1;
     displayHelper(spaceNum, root);
     return;
+}
+
+void printHelper(bSTNode *node) {
+    if (node == NULL) {
+
+    } else {
+        printHelper(node->left);
+        cout << node->key << " ";
+        printHelper(node->right);
+    }
+}
+
+void bST::print() {
+    printHelper(root);
 }

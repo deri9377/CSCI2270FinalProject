@@ -8,23 +8,23 @@ LinkedList::LinkedList() {
 }
 
 LinkedList::~LinkedList() {
-    while (root != NULL) {
-        LLNode *temp = root->next;
-        delete root;
-        root = temp;
-    }
+    // while (root != NULL) {
+    //     LLNode *temp = root->next;
+    //     delete root;
+    //     root = temp;
+    // }
 }
 
 LLNode* LinkedList::search(int key) {
     LLNode* current = root;
     while (current != NULL) {
         if (current->key == key) {
-            cout << "LLNode found" << endl;
+            cout << "found" << endl;
             return current;
         }
         current = current->next;
     }
-    cout << key << " is not in the list" << endl;
+    cout << "Not found" << endl; 
     return NULL;
 }
 
