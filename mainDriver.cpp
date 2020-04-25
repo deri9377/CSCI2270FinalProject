@@ -22,8 +22,8 @@ double loadChaining(int data[], Chaining hashChain, int start, int end) {
 double searchChaining(int data[], int size, Chaining hashChain) {
     clock_t t;
     t = clock();
-    for (int i = 0; i < size; i++) {
-        //hashChain.searchItem(data[i]);
+    for (int i = 0; i < 100; i++) {
+        hashChain.searchItem(data[i]);
     }
     t = clock() - t;
     return (double)t/CLOCKS_PER_SEC;
@@ -44,7 +44,7 @@ double loadLinearProbing(int data[], LinearProbing linearHash, int start, int en
 double searchLinearProbing(int data[], int size, LinearProbing linearHash) {
     clock_t t;
     t = clock();
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < 100; i++) {
         linearHash.searchItem(data[i]);
     }
     t = clock() - t;
@@ -147,9 +147,9 @@ int main() {
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
         cSearchA[i] = searchChaining(random, 100, hashChain);
-        // lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
-        // lLSearchA[i] = searchLinkedList(random, 100, list);
-        // bSTSearchA[i] = searchBST(random, 100, tree);
+        lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
+        lLSearchA[i] = searchLinkedList(random, 100, list);
+        bSTSearchA[i] = searchBST(random, 100, tree);
     }
 
     hashChain.~Chaining();
