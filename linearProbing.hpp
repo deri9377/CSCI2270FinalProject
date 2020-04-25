@@ -1,27 +1,26 @@
-#ifndef HASH_HPP
-#define HASH_HPP
-
-#include <string>
-
-
+#include <iostream>
 using namespace std;
 
-struct node
+#ifndef LINEARPROBING_HPP
+#define LINEARPROBING_HPP
+
+struct LPNode
 {
     int key;
-    struct node* next;
+    struct LPNode* next;
 };
 
-class Chaining
+class LinearProbing
 {
     int tableSize;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
-    node* *table;
+    LPNode* *table;
     int numOfcolision =0;
-    node* createNode(int key, node* next);
+    LPNode* createLPNode(int key, LPNode* next);
 public:
-    Chaining(int bsize);  // Constructor
+    LinearProbing(int bsize);  // Constructor
+    ~LinearProbing(); //Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);
@@ -32,7 +31,7 @@ public:
     void printTable();
     int getNumOfCollision();
 
-    node* searchItem(int key);
+    LPNode* searchItem(int key);
 };
 
-#endif
+#endif 

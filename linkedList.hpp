@@ -4,20 +4,20 @@ using namespace std;
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
 
-struct Node {
+struct LLNode {
     int key;
-    Node *next;
+    LLNode *next;
 };
 
-class linkedList {
+class LinkedList {
     private:
-        Node* root;
+        LLNode* root;
 
     public:
-        linkedList();
-        ~linkedList();
+        LinkedList();
+        ~LinkedList();
         void insert(int k);
-        Node* search(int key);
+        LLNode* search(int key);
         void display();
 };
 

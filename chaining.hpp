@@ -6,10 +6,10 @@
 
 using namespace std;
 
-struct node
+struct CNode
 {
     int key;
-    struct node* next;
+    struct CNode* next;
 };
 
 class Chaining
@@ -17,11 +17,12 @@ class Chaining
     int tableSize;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
-    node* *table;
+    CNode* *table;
     int numOfcolision =0;
-    node* createNode(int key, node* next);
+    CNode* createCNode(int key, CNode* next);
 public:
     Chaining(int bsize);  // Constructor
+    ~Chaining(); //Deconstructor
 
     // inserts a key into hash table
     bool insertItem(int key);
@@ -32,7 +33,7 @@ public:
     void printTable();
     int getNumOfCollision();
 
-    node* searchItem(int key);
+    CNode* searchItem(int key);
 };
 
 #endif

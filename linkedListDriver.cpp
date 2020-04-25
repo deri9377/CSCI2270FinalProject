@@ -1,15 +1,28 @@
 #include <iostream>
+#include <fstream>
 #include "linkedList.hpp"
+#include "ctime"
 using namespace std;
 
 int main() {
+    clock_t t;
     linkedList list;
-    list.insert(10);
-    list.insert(5);
-    list.insert(2);
-    list.insert(8);
-    list.insert(12);
+    ifstream file;
+    file.open("dataSetB.csv");
+    if (file.is_open()) {
+        string line;
+        //Run everything
+        // while (getline(file, line, ',')) {
+        //     list.insert(stoi(line));
+        // }
+        //First 100 elements
+        t = clock();
+        for (int i = 0; i < 100; i++) {
+            getline(file, line, ',');
+            list.insert(stoi(line));
+        }
+    }
+    t = clock() - t;
     list.display();
-    list.search(15);
-    list.search(8);
+    cout << "It took: (" << (double)t/CLOCKS_PER_SEC << " seconds) to load the first 100 elemets" << endl;
 }

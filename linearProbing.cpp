@@ -1,45 +1,26 @@
 #include <iostream>
+#include "linearProbing.hpp"
 using namespace std;
 
-struct node
-{
-    int key;
-    struct node* next;
-};
-
-class LinearProbing
-{
-    int tableSize;  // No. of buckets (linked lists)
-
-    // Pointer to an array containing buckets
-    node* *table;
-    int numOfcolision =0;
-    node* createNode(int key, node* next);
-public:
-    LinearProbing(int bsize);  // Constructor
-
-    // inserts a key into hash table
-    bool insertItem(int key);
-
-    // hash function to map values to key
-    unsigned int hashFunction(int key);
-
-    void printTable();
-    int getNumOfCollision();
-
-    node* searchItem(int key);
-};
-
-node* LinearProbing::createNode(int key, node* next) {
-    node* temp;
+LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
+    LPNode* temp = new LPNode();
     temp->key = key;
     temp->next = next;
     return temp;
 }
 
+LinearProbing::~LinearProbing() {
+    for (int i = 0; i < tableSize; i++) {
+        if (table[i] != NULL) {
+            delete table[i];
+            table[i] = NULL;
+        }
+    }
+}
+
 LinearProbing::LinearProbing(int bsize) {
     tableSize = bsize;
-    table = new node*[bsize];
+    table = new LPNode*[bsize];
 }
 
 bool LinearProbing::insertItem(int key) {
@@ -49,14 +30,14 @@ bool LinearProbing::insertItem(int key) {
         hash++;
         numOfcolision++;
         collisions++;
-        if (hash == tableSize) {
+        if (hash == tableSize - 1) {
             hash = 0;
         }
         if (collisions == tableSize) {
             return false;
         }
     }
-    table[hash] = createNode(key, NULL);
+    table[hash] = createLPNode(key, NULL);
     return true;
 }
 
@@ -78,7 +59,7 @@ int LinearProbing::getNumOfCollision() {
     return numOfcolision;
 }
 
-node* LinearProbing::searchItem(int key) {
+LPNode* LinearProbing::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     int collisions = 0;
     while (table[hash]->key != key) {
