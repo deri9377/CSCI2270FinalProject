@@ -9,13 +9,13 @@ struct LLNode {
     LLNode *next;
 };
 
-class linkedList {
+class LinkedList {
     private:
         LLNode* root;
 
     public:
-        linkedList();
-        ~linkedList();
+        LinkedList();
+        ~LinkedList();
         void insert(int k);
         LLNode* search(int key);
         void display();

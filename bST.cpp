@@ -7,9 +7,19 @@ bST::bST() {
     root = NULL;
 }
 
-bST::~bST() {
-
+void deleteHelper(bSTNode *node) { 
+    if (node != NULL) {
+        deleteHelper(node->left);
+        deleteHelper(node->right);
+        delete node;
+        node = NULL;
+    }
 }
+
+bST::~bST() {
+    deleteHelper(root);
+}
+
 bSTNode* insertHelper(int key, bSTNode* curr)
 {
     if(curr == NULL)

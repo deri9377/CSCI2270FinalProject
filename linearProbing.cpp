@@ -3,10 +3,19 @@
 using namespace std;
 
 LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
-    LPNode* temp;
+    LPNode* temp = new LPNode();
     temp->key = key;
     temp->next = next;
     return temp;
+}
+
+LinearProbing::~LinearProbing() {
+    for (int i = 0; i < tableSize; i++) {
+        if (table[i] != NULL) {
+            delete table[i];
+            table[i] = NULL;
+        }
+    }
 }
 
 LinearProbing::LinearProbing(int bsize) {
@@ -21,7 +30,7 @@ bool LinearProbing::insertItem(int key) {
         hash++;
         numOfcolision++;
         collisions++;
-        if (hash == tableSize) {
+        if (hash == tableSize - 1) {
             hash = 0;
         }
         if (collisions == tableSize) {
