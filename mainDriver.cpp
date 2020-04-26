@@ -157,7 +157,7 @@ int main() {
     // linearHash.~LinearProbing();
     // list.~LinkedList();
     // tree.~bST();
-
+  
     //Data set B
     double cInsertB[400];
     double lPInsertB[400];
@@ -183,4 +183,58 @@ int main() {
     }
 }
 
+    ofstream mfile;
+    mfile.open("outputA.csv");
+    mfile << "A" << endl;
+    mfile << "Chaining" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << cInsertA[i] << ",";
+    }
+    mfile << endl;
+    mfile << "Linear Probing" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lPInsertA[i] << ",";
+    }
+    mfile << endl;
+    mfile << "Linked List" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lLInsertA[i] << ",";
+    }
+    mfile << endl;
+    mfile << "BST" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTInsertA[i] << ",";
+    }
+    mfile.close();
+    mfile.open("outputB.csv");
+    mfile << "B" << endl;
+    mfile << "Chaining" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << cInsertB[i] << ",";
+    }
+    mfile << endl;
+    mfile << "Linear Probing" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lPInsertB[i] << ",";
+    }
+    mfile << endl;
+    mfile << "Linked List" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lLInsertB[i] << ",";
+    }
+    mfile << endl;
+    mfile << "BST" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTInsertB[i] << ",";
+    }
+    mfile.close();
 
+}
