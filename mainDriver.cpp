@@ -159,28 +159,28 @@ int main() {
     // tree.~bST();
 
     //Data set B
-    // double cInsertB[400];
-    // double lPInsertB[400];
-    // double lLInsertB[400];
-    // double bSTInsertB[400];
-    // double cSearchB[400];
-    // double lPSearchB[400];
-    // double lLSearchB[400];
-    // double bSTSearchB[400];
+    double cInsertB[400];
+    double lPInsertB[400];
+    double lLInsertB[400];
+    double bSTInsertB[400];
+    double cSearchB[400];
+    double lPSearchB[400];
+    double lLSearchB[400];
+    double bSTSearchB[400];
 
-    // for (int i = 0; i < 400; i++) {
-    //     for (int j = 0; j < 100; j++) {
-    //         random[j] = dataA[rand() % ((i * 100) + 100)];
-    //     }
-    //     cInsertB[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
-    //     lPInsertB[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
-    //     lLInsertB[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
-    //     bSTInsertB[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
-    //     cSearchB[i] = searchChaining(random, 100, hashChain);
-    //     lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
-    //     lLSearchB[i] = searchLinkedList(random, 100, list);
-    //     bSTSearchB[i] = searchBST(random, 100, tree);
-    // }
+    for (int i = 0; i < 400; i++) {
+        for (int j = 0; j < 100; j++) {
+            random[j] = dataA[rand() % ((i * 100) + 100)];
+        }
+        cInsertB[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
+        lPInsertB[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
+        lLInsertB[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
+        bSTInsertB[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
+        cSearchB[i] = searchChaining(random, 100, hashChain);
+        lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
+        lLSearchB[i] = searchLinkedList(random, 100, list);
+        bSTSearchB[i] = searchBST(random, 100, tree);
+    }
 }
 
 
