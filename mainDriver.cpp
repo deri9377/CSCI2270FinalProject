@@ -181,7 +181,6 @@ int main() {
         lLSearchB[i] = searchLinkedList(random, 100, list);
         bSTSearchB[i] = searchBST(random, 100, tree);
     }
-}
 
     ofstream mfile;
     mfile.open("outputA.csv");
