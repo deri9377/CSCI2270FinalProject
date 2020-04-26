@@ -146,10 +146,10 @@ int main() {
         lPInsertA[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
-        // cSearchA[i] = searchChaining(random, 100, hashChain);
-        // lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
-        // lLSearchA[i] = searchLinkedList(random, 100, list);
-        // bSTSearchA[i] = searchBST(random, 100, tree);
+        cSearchA[i] = searchChaining(random, 100, hashChain);
+        lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
+        lLSearchA[i] = searchLinkedList(random, 100, list);
+        bSTSearchA[i] = searchBST(random, 100, tree);
     }
 
 

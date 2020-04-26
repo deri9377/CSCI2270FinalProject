@@ -19,7 +19,6 @@ LLNode* LinkedList::search(int key) {
     LLNode* current = root;
     while (current != NULL) {
         if (current->key == key) {
-            cout << "found" << endl;
             return current;
         }
         current = current->next;
