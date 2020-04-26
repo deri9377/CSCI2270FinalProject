@@ -10,12 +10,12 @@ LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
 }
 
 LinearProbing::~LinearProbing() {
-    for (int i = 0; i < tableSize; i++) {
-        if (table[i] != NULL) {
-            delete table[i];
-            table[i] = NULL;
-        }
-    }
+    // for (int i = 0; i < tableSize; i++) {
+    //     if (table[i] != NULL) {
+    //         delete table[i];
+    //         table[i] = NULL;
+    //     }
+    // }
 }
 
 LinearProbing::LinearProbing(int bsize) {

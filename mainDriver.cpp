@@ -8,7 +8,7 @@
 using namespace std;
 
 //load the data from a set from a chaining hash map
-double loadChaining(int data[], Chaining hashChain, int start, int end) {
+double loadChaining(int data[], Chaining &hashChain, int start, int end) {
     clock_t t;
     t = clock();
     for (int i = start; i < end; i++) {
@@ -30,7 +30,7 @@ double searchChaining(int data[], int size, Chaining hashChain) {
 }
 
 //load data from a set for a linear probing hash map
-double loadLinearProbing(int data[], LinearProbing linearHash, int start, int end) {
+double loadLinearProbing(int data[], LinearProbing &linearHash, int start, int end) {
     clock_t t;
     t = clock();
     for (int i = start; i < end; i++) {
@@ -52,7 +52,7 @@ double searchLinearProbing(int data[], int size, LinearProbing linearHash) {
 }
 
 //load the data from a set for the linked list
-double loadLinkedList(int data[], LinkedList list, int start, int end) {
+double loadLinkedList(int data[], LinkedList &list, int start, int end) {
     clock_t t;
     t = clock();
     for (int i = start; i < end; i++) {
@@ -74,7 +74,7 @@ double searchLinkedList(int data[], int size, LinkedList list) {
 }
 
 //read the data for the binary search tree
-double loadBST(int data[], bST tree, int start, int end) {
+double loadBST(int data[], bST &tree, int start, int end) {
     clock_t t;
     t = clock();
     for (int i = start; i < end; i++) {
@@ -134,20 +134,30 @@ int main() {
     double bSTInsertA[400];
     double cSearchA[400];
     double lPSearchA[400];
+    double lLSearchA[400];
     double bSTSearchA[400];
 
+    int random[100];
     for (int i = 0; i < 400; i++) {
+        for (int j = 0; j < 100; j++) {
+            random[j] = dataA[rand() % ((i * 100) + 100)];
+        }
         cInsertA[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
         lPInsertA[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
+        cSearchA[i] = searchChaining(random, 100, hashChain);
+        lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
+        lLSearchA[i] = searchLinkedList(random, 100, list);
+        bSTSearchA[i] = searchBST(random, 100, tree);
     }
 
-    hashChain.~Chaining();
-    linearHash.~LinearProbing();
-    list.~LinkedList();
-    tree.~bST();
 
+    // hashChain.~Chaining();
+    // linearHash.~LinearProbing();
+    // list.~LinkedList();
+    // tree.~bST();
+  
     //Data set B
     double cInsertB[400];
     double lPInsertB[400];
@@ -155,14 +165,23 @@ int main() {
     double bSTInsertB[400];
     double cSearchB[400];
     double lPSearchB[400];
+    double lLSearchB[400];
     double bSTSearchB[400];
 
     for (int i = 0; i < 400; i++) {
+        for (int j = 0; j < 100; j++) {
+            random[j] = dataA[rand() % ((i * 100) + 100)];
+        }
         cInsertB[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
         lPInsertB[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertB[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
+        cSearchB[i] = searchChaining(random, 100, hashChain);
+        lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
+        lLSearchB[i] = searchLinkedList(random, 100, list);
+        bSTSearchB[i] = searchBST(random, 100, tree);
     }
+}
 
     ofstream mfile;
     mfile.open("outputA.csv");
