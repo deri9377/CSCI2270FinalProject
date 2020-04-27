@@ -214,30 +214,28 @@ int main() {
     }
 
     ofstream mfile;
-    mfile.open("outputA.csv");
+    mfile.open("chaining.csv");
     mfile << "A" << endl;
-    mfile << "Chaining" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cInsertA[i] << ",";
     }
-    mfile << endl;
-    mfile << "Linear Probing" << endl;
+    mfile << endl << "B" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << cInsertB[i] << ",";
+    }
+    mfile.close();
+    mfile.open("linearProbing.csv");
+    mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lPInsertA[i] << ",";
     }
-    mfile << endl;
-    mfile << "Linked List" << endl;
+    mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
-        mfile << lLInsertA[i] << ",";
-    }
-    mfile << endl;
-    mfile << "BST" << endl;
-    for(int i = 0; i < 400;i++)
-    {
-        mfile << bSTInsertA[i] << ",";
+        mfile << lPInsertB[i] << ",";
     }
     mfile << endl;
     mfile << "Quadratic Probing" << endl;
@@ -246,27 +244,26 @@ int main() {
     }
     mfile << endl;
     mfile.close();
-    mfile.open("outputB.csv");
-    mfile << "B" << endl;
-    mfile << "Chaining" << endl;
+    mfile.open("linkedList.csv");
+    mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
-        mfile << cInsertB[i] << ",";
+        mfile << lLInsertA[i] << ",";
     }
-    mfile << endl;
-    mfile << "Linear Probing" << endl;
-    for(int i = 0; i < 400;i++)
-    {
-        mfile << lPInsertB[i] << ",";
-    }
-    mfile << endl;
-    mfile << "Linked List" << endl;
+    mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lLInsertB[i] << ",";
     }
+    mfile.close();
+    mfile.open("BST.csv");
+    mfile << "A" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTInsertA[i] << ",";
+    }
     mfile << endl;
-    mfile << "BST" << endl;
+    mfile << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << bSTInsertB[i] << ",";
@@ -278,5 +275,15 @@ int main() {
     }
     mfile << endl;
     mfile.close();
-
+    mfile.open("quadraticProbing.csv");
+    mfile << "A" << endl;
+    for (int i = 0; i < 400; i++) {
+        mfile << QPInsertA[i] << ",";
+    }
+    mfile << endl;
+    mfile << "B" << endl;
+    for (int i = 0; i < 400; i++) {
+        mfile << QPInsertB[i] << ",";
+    }
+    mfile.close();
 }
