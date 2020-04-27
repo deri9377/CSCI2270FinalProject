@@ -237,6 +237,12 @@ int main() {
     {
         mfile << lPInsertB[i] << ",";
     }
+    mfile << endl;
+    mfile << "Quadratic Probing" << endl;
+    for (int i = 0; i < 400; i++) {
+        mfile << QPInsertA[i] << ",";
+    }
+    mfile << endl;
     mfile.close();
     mfile.open("linkedList.csv");
     mfile << "A" << endl;
@@ -262,6 +268,12 @@ int main() {
     {
         mfile << bSTInsertB[i] << ",";
     }
+    mfile << endl;
+    mfile << "Quadratic Probing" << endl;
+    for (int i = 0; i < 400; i++) {
+        mfile << QPInsertB[i] << ",";
+    }
+    mfile << endl;
     mfile.close();
     mfile.open("quadraticProbing.csv");
     mfile << "A" << endl;
