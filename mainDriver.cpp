@@ -205,7 +205,7 @@ int main() {
         lPInsertB[i] = loadLinearProbing(dataB, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertB[i] = loadLinkedList(dataB, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataB, tree, i * 100, (i * 100) + 100)/100;
-        QPSearchB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
+        QPInsertB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
         cSearchB[i] = searchChaining(random, 100, hashChain);
         lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
         lLSearchB[i] = searchLinkedList(random, 100, list);
@@ -214,69 +214,66 @@ int main() {
     }
 
     ofstream mfile;
-    mfile.open("outputA.csv");
+    mfile.open("chaining.csv");
     mfile << "A" << endl;
-    mfile << "Chaining" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cInsertA[i] << ",";
     }
-    mfile << endl;
-    mfile << "Linear Probing" << endl;
-    for(int i = 0; i < 400;i++)
-    {
-        mfile << lPInsertA[i] << ",";
-    }
-    mfile << endl;
-    mfile << "Linked List" << endl;
-    for(int i = 0; i < 400;i++)
-    {
-        mfile << lLInsertA[i] << ",";
-    }
-    mfile << endl;
-    mfile << "BST" << endl;
-    for(int i = 0; i < 400;i++)
-    {
-        mfile << bSTInsertA[i] << ",";
-    }
-    mfile << endl;
-    mfile << "Quadratic Probing" << endl;
-    for (int i = 0; i < 400; i++) {
-        mfile << QPInsertA[i] << ",";
-    }
-    mfile << endl;
-    mfile.close();
-    mfile.open("outputB.csv");
-    mfile << "B" << endl;
-    mfile << "Chaining" << endl;
+    mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cInsertB[i] << ",";
     }
-    mfile << endl;
-    mfile << "Linear Probing" << endl;
+    mfile.close();
+    mfile.open("linearProbing.csv");
+    mfile << "A" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lPInsertA[i] << ",";
+    }
+    mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lPInsertB[i] << ",";
     }
     mfile << endl;
-    mfile << "Linked List" << endl;
+    mfile.close();
+    mfile.open("linkedList.csv");
+    mfile << "A" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lLInsertA[i] << ",";
+    }
+    mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lLInsertB[i] << ",";
     }
+    mfile.close();
+    mfile.open("BST.csv");
+    mfile << "A" << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTInsertA[i] << ",";
+    }
     mfile << endl;
-    mfile << "BST" << endl;
+    mfile << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << bSTInsertB[i] << ",";
     }
     mfile << endl;
-    mfile << "Quadratic Probing" << endl;
+    mfile.close();
+    mfile.open("quadraticProbing.csv");
+    mfile << "A" << endl;
+    for (int i = 0; i < 400; i++) {
+        mfile << QPInsertA[i] << ",";
+    }
+    mfile << endl;
+    mfile << "B" << endl;
     for (int i = 0; i < 400; i++) {
         mfile << QPInsertB[i] << ",";
     }
-    mfile << endl;
     mfile.close();
-
 }

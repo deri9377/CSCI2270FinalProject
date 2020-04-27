@@ -30,6 +30,7 @@ bool QuadraticProbing::insertItem(int key) {
         hash = hashFunction(key + (numOfcolision * numOfcolision));
         numOfcolision++;
         if (numOfcolision == tableSize) {
+            cout << "Not Found";
             return false;
         }
     }
