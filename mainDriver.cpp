@@ -213,24 +213,44 @@ int main() {
         QPSearchB[i] = searchQuadraticProbing(random, 100, quadraticHash);
     }
 
+
     ofstream mfile;
+
+    //Chaining
     mfile.open("chaining.csv");
     mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cInsertA[i] << ",";
     }
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << cSearchA[i] << ",";
+    }
     mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cInsertB[i] << ",";
     }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << cSearchB[i] << ",";
+    }
     mfile.close();
+
+
+    //Linear Probing
     mfile.open("linearProbing.csv");
     mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lPInsertA[i] << ",";
+    }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lPSearchA[i] << ",";
     }
     mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
@@ -238,24 +258,48 @@ int main() {
         mfile << lPInsertB[i] << ",";
     }
     mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lPSearchB[i] << ",";
+    }
+    mfile << endl;
     mfile.close();
+
+    //Linked List
     mfile.open("linkedList.csv");
     mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lLInsertA[i] << ",";
     }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lLSearchA[i] << ",";
+    }
     mfile << endl << "B" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << lLInsertB[i] << ",";
     }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << lLSearchB[i] << ",";
+    }
     mfile.close();
+
+    //BST
     mfile.open("BST.csv");
     mfile << "A" << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << bSTInsertA[i] << ",";
+    }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTSearchA[i] << ",";
     }
     mfile << endl;
     mfile << "B" << endl;
@@ -264,16 +308,33 @@ int main() {
         mfile << bSTInsertB[i] << ",";
     }
     mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << bSTSearchB[i] << ",";
+    }
+    mfile << endl;
     mfile.close();
+
+    //Quadratic Probing
     mfile.open("quadraticProbing.csv");
     mfile << "A" << endl;
     for (int i = 0; i < 400; i++) {
         mfile << QPInsertA[i] << ",";
     }
     mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << QPSearchA[i] << ",";
+    }
+    mfile << endl;
     mfile << "B" << endl;
     for (int i = 0; i < 400; i++) {
         mfile << QPInsertB[i] << ",";
+    }
+    mfile << endl;
+    for(int i = 0; i < 400;i++)
+    {
+        mfile << QPSearchB[i] << ",";
     }
     mfile.close();
 }
