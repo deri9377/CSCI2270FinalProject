@@ -1,15 +1,15 @@
 #include <iostream>
-#include "linearProbing.hpp"
+#include "quadraticProbing.hpp"
 using namespace std;
 
-LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
-    LPNode* temp = new LPNode();
+QPNode* QuadraticProbing::createQPNode(int key, QPNode* next) {
+    QPNode* temp = new QPNode();
     temp->key = key;
     temp->next = next;
     return temp;
 }
 
-LinearProbing::~LinearProbing() {
+QuadraticProbing::~QuadraticProbing() {
     // for (int i = 0; i < tableSize; i++) {
     //     if (table[i] != NULL) {
     //         delete table[i];
@@ -18,33 +18,30 @@ LinearProbing::~LinearProbing() {
     // }
 }
 
-LinearProbing::LinearProbing(int bsize) {
+QuadraticProbing::QuadraticProbing(int bsize) {
     tableSize = bsize;
-    table = new LPNode*[bsize];
+    table = new QPNode*[bsize];
 }
 
-bool LinearProbing::insertItem(int key) {
+bool QuadraticProbing::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     numOfcolision = 1;
     while (table[hash] != NULL) {
-        hash = hashFunction(key + numOfcolision);
+        hash = hashFunction(key + (numOfcolision * numOfcolision));
         numOfcolision++;
-        if (hash == tableSize - 1) {
-            hash = 0;
-        }
         if (numOfcolision == tableSize) {
             return false;
         }
     }
-    table[hash] = createLPNode(key, NULL);
+    table[hash] = createQPNode(key, NULL);
     return true;
 }
 
-unsigned int LinearProbing::hashFunction(int key) {
+unsigned int QuadraticProbing::hashFunction(int key) {
     return key % tableSize;
 }
 
-void LinearProbing::printTable() {
+void QuadraticProbing::printTable() {
     for (int i = 0; i < tableSize; i++) {
         if (table[i] == NULL) {
             cout << "[" << i << "]:" << endl;
@@ -54,15 +51,15 @@ void LinearProbing::printTable() {
     }
 }
 
-int LinearProbing::getNumOfCollision() {
+int QuadraticProbing::getNumOfCollision() {
     return numOfcolision;
 }
 
-LPNode* LinearProbing::searchItem(int key) {
+QPNode* QuadraticProbing::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     numOfcolision = 1;
     while (table[hash] != NULL && table[hash]->key != key) {
-        hash = hashFunction(key + numOfcolision);
+        hash = hashFunction(key + (numOfcolision * numOfcolision));
         numOfcolision++;
         if (hash == tableSize - 1){
             hash = 0;

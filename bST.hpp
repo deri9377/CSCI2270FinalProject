@@ -20,6 +20,7 @@ class bST {
         void insert(int key);
         bSTNode* search(int key);
         void display();
+        void print();
 };
 
 #endif

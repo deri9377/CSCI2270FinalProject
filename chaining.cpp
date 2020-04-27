@@ -8,12 +8,12 @@ Chaining::Chaining(int bsize) {
 }
 
 Chaining::~Chaining() {
-    for (int i = 0; i < tableSize; i++) {
-        if (table[i] != NULL) {
-            delete table[i];
-            table[i] = NULL;
-        }
-    }
+    // for (int i = 0; i < tableSize; i++) {
+    //     if (table[i] != NULL) {
+    //         delete table[i];
+    //         table[i] = NULL;
+    //     }
+    // }
 }
 
 CNode* Chaining::createCNode(int key, CNode *next) {
@@ -45,16 +45,15 @@ unsigned int Chaining::hashFunction(int key) {
 
 void Chaining::printTable() {
     for (int i = 0; i < tableSize; i++) {
-        if (table[i] == NULL) {
-            cout << "[" << i << "]:" << endl;
-        } else {
+        cout << "[" << i << "]:";
+        if (table[i] != NULL) {
             CNode* current = table[i];
-            cout << "[" << i << "]:";
             while (current != NULL) {
                 cout << " -> " << current->key;
                 current = current->next;
             }
         }
+        cout << endl;
     }
 }
 
@@ -65,6 +64,8 @@ CNode* Chaining::searchItem(int key) {
         if (current->key == key) {
             return current;
         }
+        current = current->next;
     }
+    cout << "Not found" << endl;
     return NULL;
 }
