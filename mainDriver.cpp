@@ -205,7 +205,7 @@ int main() {
         lPInsertB[i] = loadLinearProbing(dataB, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertB[i] = loadLinkedList(dataB, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataB, tree, i * 100, (i * 100) + 100)/100;
-        QPSearchB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
+        QPInsertB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
         cSearchB[i] = searchChaining(random, 100, hashChain);
         lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
         lLSearchB[i] = searchLinkedList(random, 100, list);
@@ -238,11 +238,6 @@ int main() {
         mfile << lPInsertB[i] << ",";
     }
     mfile << endl;
-    mfile << "Quadratic Probing" << endl;
-    for (int i = 0; i < 400; i++) {
-        mfile << QPInsertA[i] << ",";
-    }
-    mfile << endl;
     mfile.close();
     mfile.open("linkedList.csv");
     mfile << "A" << endl;
@@ -267,11 +262,6 @@ int main() {
     for(int i = 0; i < 400;i++)
     {
         mfile << bSTInsertB[i] << ",";
-    }
-    mfile << endl;
-    mfile << "Quadratic Probing" << endl;
-    for (int i = 0; i < 400; i++) {
-        mfile << QPInsertB[i] << ",";
     }
     mfile << endl;
     mfile.close();
