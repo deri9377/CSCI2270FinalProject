@@ -10,12 +10,12 @@ LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
 }
 
 LinearProbing::~LinearProbing() {
-    // for (int i = 0; i < tableSize; i++) {
-    //     if (table[i] != NULL) {
-    //         delete table[i];
-    //         table[i] = NULL;
-    //     }
-    // }
+    for (int i = 0; i < tableSize; i++) {
+        if (table[i] != NULL) {
+            delete table[i];
+            table[i] = new LPNode();
+        }
+    }
 }
 
 LinearProbing::LinearProbing(int bsize) {
@@ -29,10 +29,11 @@ bool LinearProbing::insertItem(int key) {
     while (table[hash] != NULL) {
         hash = hashFunction(key + numOfcolision);
         numOfcolision++;
-        if (hash == tableSize - 1) {
+        if (hash == tableSize) {
             hash = 0;
         }
         if (numOfcolision == tableSize) {
+            cout << "didn't insert" << endl; 
             return false;
         }
     }

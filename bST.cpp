@@ -12,12 +12,13 @@ void deleteHelper(bSTNode *node) {
         deleteHelper(node->left);
         deleteHelper(node->right);
         delete node;
-        node = NULL;
+        
     }
 }
 
 bST::~bST() {
-    // deleteHelper(root);
+    deleteHelper(root);
+    root = NULL;
 }
 
 bSTNode* insertHelper(int key, bSTNode* curr)
