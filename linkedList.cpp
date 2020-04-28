@@ -8,11 +8,13 @@ LinkedList::LinkedList() {
 }
 
 LinkedList::~LinkedList() {
-    // while (root != NULL) {
-    //     LLNode *temp = root->next;
-    //     delete root;
-    //     root = temp;
-    // }
+    if (root != NULL) {
+        while (root->next != NULL) {
+            LLNode *temp = root->next;
+            delete root;
+            root = temp;
+        }
+    }
 }
 
 LLNode* LinkedList::search(int key) {
