@@ -178,7 +178,6 @@ int main() {
         // bSTSearchA[i] = searchBST(random, 100, tree);
         QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash);
     }
-
     hashChain.~Chaining();
     linearHash.~LinearProbing();
     list.~LinkedList();
