@@ -10,12 +10,7 @@ QPNode* QuadraticProbing::createQPNode(int key, QPNode* next) {
 }
 
 QuadraticProbing::~QuadraticProbing() {
-    for (int i = 0; i < tableSize; i++) {
-        if (table[i] != NULL) {
-            delete table[i];
-            table[i] = new QPNode();
-        }
-    }
+    table = new QPNode*[tableSize];
 }
 
 QuadraticProbing::QuadraticProbing(int bsize) {

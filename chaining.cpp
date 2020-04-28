@@ -8,12 +8,8 @@ Chaining::Chaining(int bsize) {
 }
 
 Chaining::~Chaining() {
-    for (int i = 0; i < tableSize; i++) {
-        if (table[i] != NULL) {
-            delete table[i];
-            table[i] = new CNode();
-        }
-    }
+    delete[] table;
+    table = new CNode*[tableSize];
 }
 
 CNode* Chaining::createCNode(int key, CNode *next) {

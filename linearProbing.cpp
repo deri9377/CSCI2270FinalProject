@@ -10,12 +10,7 @@ LPNode* LinearProbing::createLPNode(int key, LPNode* next) {
 }
 
 LinearProbing::~LinearProbing() {
-    for (int i = 0; i < tableSize; i++) {
-        if (table[i] != NULL) {
-            delete table[i];
-            table[i] = new LPNode();
-        }
-    }
+    table = new LPNode*[tableSize];
 }
 
 LinearProbing::LinearProbing(int bsize) {
@@ -27,7 +22,7 @@ bool LinearProbing::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     numOfcolision = 1;
     while (table[hash] != NULL) {
-        hash = hashFunction(key + numOfcolision);
+        hash++;
         numOfcolision++;
         if (hash == tableSize) {
             hash = 0;
@@ -63,9 +58,9 @@ LPNode* LinearProbing::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     numOfcolision = 1;
     while (table[hash] != NULL && table[hash]->key != key) {
-        hash = hashFunction(key + numOfcolision);
+        hash++;
         numOfcolision++;
-        if (hash == tableSize - 1){
+        if (hash == tableSize){
             hash = 0;
         }
         if (numOfcolision == tableSize) {
