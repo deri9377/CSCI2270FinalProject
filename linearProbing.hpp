@@ -1,3 +1,11 @@
+/*
+Devin Riess:
+Made the class structure and did the Insert method and some of the helpers
+
+Henry Saver:
+Made the search method and some of the helpers
+*/
+
 #include <iostream>
 using namespace std;
 

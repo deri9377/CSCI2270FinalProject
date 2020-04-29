@@ -1,3 +1,12 @@
+
+/*
+Devin Riess:
+wrote the Insert and Search methods 
+
+Henry Saver:
+Wrote the class and other helper methods
+*/
+
 #ifndef HASH_HPP
 #define HASH_HPP
 

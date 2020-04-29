@@ -59,9 +59,11 @@ bSTNode* recursiveSearch(int key, bSTNode* current) {
         return current;
     }
     if (current->key < key) {
-        return recursiveSearch(key, current->right);
+        current = recursiveSearch(key, current->right);
+    } else {
+        current = recursiveSearch(key, current->left);
     }
-    return recursiveSearch(key, current->left);
+    return current;
 }
 
 bSTNode* bST::search(int key) {
