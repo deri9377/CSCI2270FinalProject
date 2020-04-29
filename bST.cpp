@@ -12,7 +12,7 @@ void deleteHelper(bSTNode *node) {  //Recursive Helper for deletion
         deleteHelper(node->left); // Calls Right - Left - Here for deletion
         deleteHelper(node->right);
         delete node;
-        node = NULL;
+        
     }
 }
 //Deconstructor
@@ -60,8 +60,10 @@ bSTNode* recursiveSearch(int key, bSTNode* current) {
     }
     if (current->key < key) { 
         return recursiveSearch(key, current->right); //Continues recursive search otherwise
+    } else {
+        current = recursiveSearch(key, current->left);
     }
-    return recursiveSearch(key, current->left);
+    return current;
 }
 //This will find the node and return it to the function
 bSTNode* bST::search(int key) {

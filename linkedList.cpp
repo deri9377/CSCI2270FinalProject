@@ -8,6 +8,7 @@ LinkedList::LinkedList() {
 }
 //Deconstructor
 LinkedList::~LinkedList() {
+
     if (root != NULL) { //Goes through the entirety of the LL and frees the memory of each node
         while (root->next != NULL) {
             LLNode *temp = root->next;

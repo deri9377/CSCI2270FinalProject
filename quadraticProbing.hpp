@@ -1,3 +1,11 @@
+/*
+    Devin Riess:
+    created the search function and some of the helper functions
+
+    Henry Saver:
+    created the insert function and some of the helper functions
+*/
+
 #ifndef QUADRATICPROBING_HPP
 #define QUADRATICPROBING_HPP
 
