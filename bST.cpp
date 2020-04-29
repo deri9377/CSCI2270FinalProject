@@ -3,21 +3,21 @@ using namespace std;
 
 #include "bST.hpp"
 
-bST::bST() {
+bST::bST() { // Constructor
     root = NULL;
 }
 
-void deleteHelper(bSTNode *node) { 
+void deleteHelper(bSTNode *node) {  //Recursive Helper for deletion
     if (node != NULL) {
-        deleteHelper(node->left);
+        deleteHelper(node->left); // Calls Right - Left - Here for deletion
         deleteHelper(node->right);
         delete node;
         
     }
 }
-
+//Deconstructor
 bST::~bST() {
-    deleteHelper(root);
+    deleteHelper(root); // Helper called
     root = NULL;
 }
 
@@ -48,26 +48,26 @@ void bST::insert(int key) {
     root = insertHelper(key, root);
     return;
 }
-
+//Uses the current node to find if the node with the desired key is located in the tree
 bSTNode* recursiveSearch(int key, bSTNode* current) {
     if(current == NULL)
     {
-        cout << "Not found" << endl;
+        cout << "Not found" << endl; //Fail case for if node DNE in the BST
         return NULL;
     }
-    if (current->key == key) {
+    if (current->key == key) { //Will return the desired node if correct key
         return current;
     }
-    if (current->key < key) {
-        current = recursiveSearch(key, current->right);
+    if (current->key < key) { 
+        return recursiveSearch(key, current->right); //Continues recursive search otherwise
     } else {
         current = recursiveSearch(key, current->left);
     }
     return current;
 }
-
+//This will find the node and return it to the function
 bSTNode* bST::search(int key) {
-    return recursiveSearch(key, root);
+    return recursiveSearch(key, root); // Search calling the search helper
 }
 
 
@@ -97,7 +97,8 @@ void bST::display()
     displayHelper(spaceNum, root);
     return;
 }
-
+//Prints the BST but not in a 2D fashion. This was just for us to use in testing purposes when 
+//constructing the other implementations of our code
 void printHelper(bSTNode *node) {
     if (node == NULL) {
 

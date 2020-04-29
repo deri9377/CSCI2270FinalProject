@@ -25,6 +25,7 @@ CNode* Chaining::createCNode(int key, CNode *next) {
 creates a new node with key and inserts it into the hash map
 */
 bool Chaining::insertItem(int key) {
+
     unsigned int hash = hashFunction(key);      //get the initial hash
     if (table[hash] == NULL) {                  //if the bucket is empty put a new node at the root of the bucket
         table[hash] = createCNode(key, NULL); 
