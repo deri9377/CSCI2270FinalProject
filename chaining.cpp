@@ -8,12 +8,8 @@ Chaining::Chaining(int bsize) {
 }
 
 Chaining::~Chaining() {
-    // for (int i = 0; i < tableSize; i++) {
-    //     if (table[i] != NULL) {
-    //         delete table[i];
-    //         table[i] = NULL;
-    //     }
-    // }
+    delete[] table;
+    table = new CNode*[tableSize];
 }
 
 CNode* Chaining::createCNode(int key, CNode *next) {
@@ -27,6 +23,7 @@ bool Chaining::insertItem(int key) {
     unsigned int hash = hashFunction(key);
     if (table[hash] == NULL) {
         table[hash] = createCNode(key, NULL);
+        return true;
     } else {
         numOfcolision++;
         CNode* current = table[hash];
@@ -36,6 +33,7 @@ bool Chaining::insertItem(int key) {
         current->next = createCNode(key, NULL);
         return true;
     }
+    cout << "didn't insert" << endl;
     return false;
 }
 
@@ -66,6 +64,6 @@ CNode* Chaining::searchItem(int key) {
         }
         current = current->next;
     }
-    cout << "Not found" << endl;
+    cout << "Not found";
     return NULL;
 }

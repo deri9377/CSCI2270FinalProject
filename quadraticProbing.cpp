@@ -10,12 +10,7 @@ QPNode* QuadraticProbing::createQPNode(int key, QPNode* next) {
 }
 
 QuadraticProbing::~QuadraticProbing() {
-    // for (int i = 0; i < tableSize; i++) {
-    //     if (table[i] != NULL) {
-    //         delete table[i];
-    //         table[i] = NULL;
-    //     }
-    // }
+    table = new QPNode*[tableSize];
 }
 
 QuadraticProbing::QuadraticProbing(int bsize) {
@@ -30,7 +25,7 @@ bool QuadraticProbing::insertItem(int key) {
         hash = hashFunction(key + (numOfcolision * numOfcolision));
         numOfcolision++;
         if (numOfcolision == tableSize) {
-            cout << "Not Found";
+            cout << "didnt insert" << endl;
             return false;
         }
     }
@@ -59,7 +54,7 @@ int QuadraticProbing::getNumOfCollision() {
 QPNode* QuadraticProbing::searchItem(int key) {
     unsigned int hash = hashFunction(key);
     numOfcolision = 1;
-    while (table[hash] != NULL && table[hash]->key != key) {
+    while (table[hash]->key != key) {
         hash = hashFunction(key + (numOfcolision * numOfcolision));
         numOfcolision++;
         if (hash == tableSize - 1){

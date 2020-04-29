@@ -20,7 +20,7 @@ double loadChaining(int data[], Chaining &hashChain, int start, int end) {
 }
 
 //search for all the items in the data set
-double searchChaining(int data[], int size, Chaining hashChain) {
+double searchChaining(int data[], int size, Chaining &hashChain) {
     clock_t t;
     t = clock();
     for (int i = 0; i < size; i++) {
@@ -42,7 +42,7 @@ double loadLinearProbing(int data[], LinearProbing &linearHash, int start, int e
 }
 
 //search for all the items in the data set
-double searchLinearProbing(int data[], int size, LinearProbing linearHash) {
+double searchLinearProbing(int data[], int size, LinearProbing &linearHash) {
     clock_t t;
     t = clock();
     for (int i = 0; i < size; i++) {
@@ -64,7 +64,7 @@ double loadLinkedList(int data[], LinkedList &list, int start, int end) {
 }
 
 //search for all the items in the data set
-double searchLinkedList(int data[], int size, LinkedList list) {
+double searchLinkedList(int data[], int size, LinkedList &list) {
     clock_t t;
     t = clock();
     for (int i = 0; i < size; i++) {
@@ -86,7 +86,7 @@ double loadBST(int data[], bST &tree, int start, int end) {
 }
 
 //search for all the items in the data set
-double searchBST(int data[], int size, bST tree) {
+double searchBST(int data[], int size, bST &tree) {
     clock_t t;
     t = clock();
     for (int i = 0; i < size; i++) {
@@ -172,18 +172,17 @@ int main() {
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
         QPInsertA[i] = loadQuadraticProbing(dataA, quadraticHash, i * 100, (i * 100) + 100)/100;
-        cSearchA[i] = searchChaining(random, 100, hashChain);
-        lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
-        lLSearchA[i] = searchLinkedList(random, 100, list);
-        bSTSearchA[i] = searchBST(random, 100, tree);
-        QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash);
+        cSearchA[i] = searchChaining(random, 100, hashChain)/100;
+        lPSearchA[i] = searchLinearProbing(random, 100, linearHash)/100;
+        lLSearchA[i] = searchLinkedList(random, 100, list)/100;
+        bSTSearchA[i] = searchBST(random, 100, tree)/100;
+        QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash)/100;
     }
-
-
-    // hashChain.~Chaining();
-    // linearHash.~LinearProbing();
-    // list.~LinkedList();
-    // tree.~bST();
+    hashChain.~Chaining();
+    linearHash.~LinearProbing();
+    list.~LinkedList();
+    tree.~bST();
+    quadraticHash.~QuadraticProbing();
   
     //Data set B
     double cInsertB[400];
@@ -199,18 +198,18 @@ int main() {
 
     for (int i = 0; i < 400; i++) {
         for (int j = 0; j < 100; j++) {
-            random[j] = dataA[rand() % ((i * 100) + 100)];
+            random[j] = dataB[rand() % ((i * 100) + 100)];
         }
         cInsertB[i] = loadChaining(dataB, hashChain, i * 100, (i * 100) + 100)/100;
         lPInsertB[i] = loadLinearProbing(dataB, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertB[i] = loadLinkedList(dataB, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataB, tree, i * 100, (i * 100) + 100)/100;
         QPInsertB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
-        cSearchB[i] = searchChaining(random, 100, hashChain);
-        lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
-        lLSearchB[i] = searchLinkedList(random, 100, list);
-        bSTSearchB[i] = searchBST(random, 100, tree);
-        QPSearchB[i] = searchQuadraticProbing(random, 100, quadraticHash);
+        cSearchB[i] = searchChaining(random, 100, hashChain)/100;
+        lPSearchB[i] = searchLinearProbing(random, 100, linearHash)/100;
+        lLSearchB[i] = searchLinkedList(random, 100, list)/100;
+        bSTSearchB[i] = searchBST(random, 100, tree)/100;
+        QPSearchB[i] = searchQuadraticProbing(random, 100, quadraticHash)/100;
     }
 
 
@@ -223,6 +222,7 @@ int main() {
     {
         mfile << cInsertA[i] << ",";
     }
+    mfile << endl;
     for(int i = 0; i < 400;i++)
     {
         mfile << cSearchA[i] << ",";

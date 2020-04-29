@@ -1,3 +1,12 @@
+/*
+Devin Riess:
+Wrote the search function and the constructor/deconstructor.
+
+Henry Saver:
+Created class and insert function as well as display method.
+
+*/
+
 #include <iostream>
 using namespace std;
 
