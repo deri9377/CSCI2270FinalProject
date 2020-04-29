@@ -172,11 +172,11 @@ int main() {
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
         bSTInsertA[i] = loadBST(dataA, tree, i * 100, (i * 100) + 100)/100;
         QPInsertA[i] = loadQuadraticProbing(dataA, quadraticHash, i * 100, (i * 100) + 100)/100;
-        cSearchA[i] = searchChaining(random, 100, hashChain);
-        lPSearchA[i] = searchLinearProbing(random, 100, linearHash);
-        lLSearchA[i] = searchLinkedList(random, 100, list);
-        bSTSearchA[i] = searchBST(random, 100, tree);
-        QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash);
+        cSearchA[i] = searchChaining(random, 100, hashChain)/100;
+        lPSearchA[i] = searchLinearProbing(random, 100, linearHash)/100;
+        lLSearchA[i] = searchLinkedList(random, 100, list)/100;
+        bSTSearchA[i] = searchBST(random, 100, tree)/100;
+        QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash)/100;
     }
     hashChain.~Chaining();
     linearHash.~LinearProbing();
@@ -205,11 +205,11 @@ int main() {
         lLInsertB[i] = loadLinkedList(dataB, list, i * 100, (i * 100) + 100)/100;
         bSTInsertB[i] = loadBST(dataB, tree, i * 100, (i * 100) + 100)/100;
         QPInsertB[i] = loadQuadraticProbing(dataB, quadraticHash, i * 100, (i * 100) + 100)/100;
-        cSearchB[i] = searchChaining(random, 100, hashChain);
-        lPSearchB[i] = searchLinearProbing(random, 100, linearHash);
-        lLSearchB[i] = searchLinkedList(random, 100, list);
-        bSTSearchB[i] = searchBST(random, 100, tree);
-        QPSearchB[i] = searchQuadraticProbing(random, 100, quadraticHash);
+        cSearchB[i] = searchChaining(random, 100, hashChain)/100;
+        lPSearchB[i] = searchLinearProbing(random, 100, linearHash)/100;
+        lLSearchB[i] = searchLinkedList(random, 100, list)/100;
+        bSTSearchB[i] = searchBST(random, 100, tree)/100;
+        QPSearchB[i] = searchQuadraticProbing(random, 100, quadraticHash)/100;
     }
 
 
