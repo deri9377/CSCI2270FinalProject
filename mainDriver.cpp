@@ -162,11 +162,12 @@ int main() {
     double bSTSearchA[400];
     double QPSearchA[400];
 
-    int random[100];
-    for (int i = 0; i < 400; i++) {
-        for (int j = 0; j < 100; j++) {
+    int random[100];    //list of 100 random elements already inserted
+    for (int i = 0; i < 400; i++) {     //loop through the iteration 400 times
+        for (int j = 0; j < 100; j++) { //fill the random array with 100 random elements
             random[j] = dataA[rand() % ((i * 100) + 100)];
         }
+        //call all of the load and searches for all the data structures 
         cInsertA[i] = loadChaining(dataA, hashChain, i * 100, (i * 100) + 100)/100;
         lPInsertA[i] = loadLinearProbing(dataA, linearHash, i * 100, (i * 100) + 100)/100;
         lLInsertA[i] = loadLinkedList(dataA, list, i * 100, (i * 100) + 100)/100;
@@ -178,6 +179,7 @@ int main() {
         bSTSearchA[i] = searchBST(random, 100, tree)/100;
         QPSearchA[i] = searchQuadraticProbing(random, 100, quadraticHash)/100;
     }
+    //call a deconstructor for all of the data structurs 
     hashChain.~Chaining();
     linearHash.~LinearProbing();
     list.~LinkedList();
